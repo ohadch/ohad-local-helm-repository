@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  chartmuseum:
+    image: ghcr.io/helm/chartmuseum:v0.14.0
+    container_name: chartmuseum
+    restart: always
+    ports:
+      - 8085:8080
+    env_file:
+      - .env
+    volumes:
+      - ./charts:/charts
+    command: --port=8080 --storage="local" --storage-local-rootdir=/charts ghcr.io/helm/chartmuseum:v0.14.0
