@@ -1,3 +1,4 @@
 # Everything in ./charts/ apart of .gitkeep
 !charts/.gitkeep
 charts/*
+registry/*
