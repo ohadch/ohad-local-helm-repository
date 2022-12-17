@@ -1,6 +1,6 @@
 version: "3.9"
 services:
-  chartmuseum:
+  helm-repository:
     image: ghcr.io/helm/chartmuseum:v0.14.0
     container_name: chartmuseum
     restart: always
@@ -13,3 +13,15 @@ services:
     volumes:
       - ./charts:/charts
     command: --port=8080 --storage="local" --storage-local-rootdir=/charts ghcr.io/helm/chartmuseum:v0.14.0
+  docker-registry:
+    image: registry:2
+    container_name: registry
+    restart: always
+    ports:
+      - "5001:5000"
+    environment:
+      - REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY=/var/lib/registry
+      - REGISTRY_STORAGE_DELETE_ENABLED=true
+    volumes:
+      - ./registry:/var/lib/registry
+    command: registry:2
