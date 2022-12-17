@@ -2,7 +2,9 @@
 
 ## Usage
 
-This spins up a local helm repository for testing purposes, and adds it to the helm repos with the name `local`:
+This spins up the following:
+- local helm repository on `http:localhost:8085` adds it to the helm repos with the name `local`
+- a local docker registry on `http:localhost:5001`
 
 ```bash
 make up
